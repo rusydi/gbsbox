@@ -38,7 +38,7 @@ class GBSBox(SBox):
 
         - ``indexing`` - indexing of variables in the ring (default : 0)
         """
-        super(GBSBox, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self._linear_ring = None
         self._differential_ring = None
@@ -55,7 +55,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox([0, 1, 3, 6, 7, 4, 5, 2], big_endian=False, indexing=1)
             sage: GS.linear_ring()
             Multivariate Polynomial Ring in x1, x2, x3, y1, y2, y3 over Finite Field of size 2
@@ -79,7 +79,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox([0, 1, 3, 6, 7, 4, 5, 2], indexing=1)
             sage: GS.differential_ring()
             Multivariate Polynomial Ring in xl1, xl2, xl3, yl1, yl2, yl3, xr1, xr2, xr3, yr1, yr2, yr3 over Finite Field of size 2
@@ -106,7 +106,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: GS.varformatstr('x', 'l')
             'xl%d'
@@ -125,7 +125,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: GS.varstrs('x', 'l')
             ('xl0', 'xl1', 'xl2')
@@ -168,7 +168,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2, big_endian=False)
             sage: GS.linear_vars('x')
             [x0, x1, x2]
@@ -193,7 +193,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2, big_endian=False)
             sage: GS.differential_vars('xl')
             [xl0, xl1, xl2]
@@ -214,7 +214,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: F = GS.twoinput_polynomials()
             sage: for f in F: print(f)
@@ -275,7 +275,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 3, 5, 8, 6, 10, 15, 4, 14, 13, 9, 2, 1, 7, 12, 11)
             sage: I = GS.linear_ideal(3, 1)
             sage: (I.vector_space_dimension() - 8) == 4
@@ -315,7 +315,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 3, 5, 8, 6, 10, 15, 4, 14, 13, 9, 2, 1, 7, 12, 11)
             sage: I = GS.autocorrelation_ideal(3, 1)
             sage: act = GS.autocorrelation_table()
@@ -352,7 +352,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 3, 5, 8, 6, 10, 15, 4, 14, 13, 9, 2, 1, 7, 12, 11)
             sage: F = GS.differential_ideal(4, order="lex")
             sage: G = F.groebner_basis()
@@ -396,13 +396,13 @@ class GBSBox(SBox):
 
 
     def gb_linear_structures(self):
-        """
+        r"""
         Return a tuple of (b, a, c) s.t. `a` is a `c`-linear structure of the
         component function `b \cdot S`.
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: gb_ls = GS.gb_linear_structures()
             sage: ls = GS.linear_structures()
@@ -445,7 +445,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: lat = GS.linear_approximation_table()
             sage: lat[1, 3] == GS.gb_linear_bias(1, 3)
@@ -466,7 +466,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: act = GS.autocorrelation_table()
             sage: act[1, 3] == GS.gb_autocorrelation(1, 3)
@@ -488,7 +488,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: ddt = GS.difference_distribution_table()
             sage: ddt[1, 3] == GS.gb_differential_probability(1, 3, get_numerator=True)
@@ -512,7 +512,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: lat = GS.linear_approximation_table()
             sage: gb_lat = GS.gb_linear_approximation_table()
@@ -532,7 +532,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: act = GS.autocorrelation_table()
             sage: gb_act = GS.gb_autocorrelation_table()
@@ -552,7 +552,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: ddt = GS.difference_distribution_table()
             sage: gb_ddt = GS.gb_difference_distribution_table()
@@ -572,7 +572,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: GS.gb_nonlinearity() == GS.nonlinearity()
             True
@@ -591,7 +591,7 @@ class GBSBox(SBox):
 
         EXAMPLES::
 
-            sage: from gbsbox import GBSBox
+            sage: load("gbsbox.py")
             sage: GS = GBSBox(0, 1, 3, 6, 7, 4, 5, 2)
             sage: GS.gb_differential_uniformity()
             2
